@@ -2,7 +2,7 @@ class BinarySearch:
     """Class for implementing binary search options"""
 
     @staticmethod
-    def binary_search_for_nums(nums: tuple, num_need: int) -> int | None:
+    def binary_search_num(nums: tuple, num_need: int) -> int | None:
         """Binary search for a number in a sorted tuple"""
         low, high = 0, len(nums) - 1
 
@@ -23,8 +23,8 @@ class BinarySearch:
 def main() -> None:
     """Tests"""
     nums = (1, 2, 3, 4, 5, 6)
-    print(BinarySearch.binary_search_for_nums(nums, 3))
-    print(BinarySearch.binary_search_for_nums(nums, -5))
+    print(BinarySearch.binary_search_num(nums, 3))
+    print(BinarySearch.binary_search_num(nums, -5))
 
 
 if __name__ == '__main__':
