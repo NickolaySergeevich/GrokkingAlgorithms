@@ -1,4 +1,6 @@
 class BinarySearch:
+    """Class for implementing binary search options"""
+
     @staticmethod
     def binary_search_for_nums(nums: tuple, num_need: int) -> int | None:
         """Binary search for a number in a sorted tuple"""
