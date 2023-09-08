@@ -72,6 +72,21 @@ class RecursiveAlgorithms:
         else:
             return mid + RecursiveAlgorithms.binary_search_num_mine(nums[mid + 1:], num_need) + 1
 
+    @staticmethod
+    def quick_sort_base(elems: list) -> list:
+        """Basic quick sort of list items"""
+        if len(elems) < 2:
+            return elems
+
+        pivot = elems[0]
+        less_elems = [elem for elem in elems[1:] if elem <= pivot]
+        greater_elems = [elem for elem in elems[1:] if elem > pivot]
+        return (
+                RecursiveAlgorithms.quick_sort_base(less_elems) +
+                [pivot] +
+                RecursiveAlgorithms.quick_sort_base(greater_elems)
+        )
+
 
 def main() -> None:
     """Tests"""
@@ -87,6 +102,9 @@ def main() -> None:
     print(RecursiveAlgorithms.binary_search_num_mine(nums, 1))
     print(RecursiveAlgorithms.binary_search_num_mine(nums, 5))
     print(RecursiveAlgorithms.binary_search_num_mine(nums, -200))
+
+    nums = [10, 5, 2, 3]
+    print(RecursiveAlgorithms.quick_sort_base(nums))
 
 
 if __name__ == '__main__':
