@@ -2,8 +2,8 @@ class BinarySearch:
     """Class for implementing binary search options"""
 
     @staticmethod
-    def search_num(nums: tuple, num_need: int) -> int | None:
-        """Binary search for a number in a sorted tuple"""
+    def search_num(nums: tuple | list, num_need: int) -> int | None:
+        """Binary search for a number in a sorted tuple | list"""
         low, high = 0, len(nums) - 1
 
         while low <= high:
