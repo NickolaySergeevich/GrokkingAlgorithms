@@ -13,6 +13,14 @@ class RecursiveAlgorithms:
         return nums[0] + RecursiveAlgorithms.sum_nums_mine(nums[1:])
 
     @staticmethod
+    def sum_nums(nums: tuple | list) -> int:
+        """Recursive sum of numbers (int and float)"""
+        if not nums:
+            return 0
+
+        return nums[0] + RecursiveAlgorithms.sum_nums(nums[1:])
+
+    @staticmethod
     def count_elems_mine(elems: tuple | list) -> int:
         """Recursive number of list elements"""
         if not elems:
@@ -31,6 +39,15 @@ class RecursiveAlgorithms:
             return nums[0]
         else:
             return another_max_num
+
+    @staticmethod
+    def max_num(nums: tuple | list) -> int:
+        """Recursive maximum number (int and float)"""
+        if len(nums) == 2:
+            return nums[0] if nums[0] > nums[1] else nums[1]
+
+        sub_max = RecursiveAlgorithms.max_num(nums[1:])
+        return nums[0] if nums[0] > sub_max else sub_max
 
     @staticmethod
     def binary_search_num_mine(nums: tuple | list, num_need: int) -> int | None:
@@ -61,8 +78,10 @@ def main() -> None:
     nums = (14, 15, -1, 200, 36, -2, 0)
 
     print(RecursiveAlgorithms.sum_nums_mine(nums))
+    print(RecursiveAlgorithms.sum_nums(nums))
     print(RecursiveAlgorithms.count_elems_mine(nums))
     print(RecursiveAlgorithms.max_num_mine(nums))
+    print(RecursiveAlgorithms.max_num(nums))
 
     nums = (1, 2, 3, 4, 5, 6)
     print(RecursiveAlgorithms.binary_search_num_mine(nums, 1))
