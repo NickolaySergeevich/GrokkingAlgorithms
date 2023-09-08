@@ -1,3 +1,6 @@
+import random
+
+
 class RecursiveAlgorithms:
     """
     Examples of recursive algorithms
@@ -87,6 +90,22 @@ class RecursiveAlgorithms:
                 RecursiveAlgorithms.quick_sort_base(greater_elems)
         )
 
+    @staticmethod
+    def quick_sort(elems: list) -> list:
+        """Basic quick sort of list items"""
+        if len(elems) < 2:
+            return elems
+
+        pivot_index = random.randint(0, len(elems) - 1)
+        pivot = elems[pivot_index]
+        less_elems = [elems[index] for index in range(len(elems)) if elems[index] <= pivot and index != pivot_index]
+        greater_elems = [elems[index] for index in range(len(elems)) if elems[index] > pivot and index != pivot_index]
+        return (
+                RecursiveAlgorithms.quick_sort_base(less_elems) +
+                [pivot] +
+                RecursiveAlgorithms.quick_sort_base(greater_elems)
+        )
+
 
 def main() -> None:
     """Tests"""
@@ -105,6 +124,7 @@ def main() -> None:
 
     nums = [10, 5, 2, 3]
     print(RecursiveAlgorithms.quick_sort_base(nums))
+    print(RecursiveAlgorithms.quick_sort(nums))
 
 
 if __name__ == '__main__':
