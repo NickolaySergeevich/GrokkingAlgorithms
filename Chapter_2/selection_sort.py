@@ -15,7 +15,7 @@ class SelectionSort:
         return smallest_num_index
 
     @staticmethod
-    def selection_sort_nums(nums: list) -> list:
+    def sort_nums(nums: list) -> list:
         """
         Selection sort for integers
         As a result of the work, the transferred list becomes empty
@@ -32,7 +32,7 @@ class SelectionSort:
 def main() -> None:
     """Tests"""
     nums = [1, 15, 16, -5, 0]
-    print(*SelectionSort.selection_sort_nums(nums))
+    print(*SelectionSort.sort_nums(nums))
 
 
 if __name__ == '__main__':
