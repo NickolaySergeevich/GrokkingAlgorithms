@@ -76,8 +76,8 @@ class RecursiveAlgorithms:
             return mid + RecursiveAlgorithms.binary_search_num_mine(nums[mid + 1:], num_need) + 1
 
     @staticmethod
-    def quick_sort_base(elems: list) -> list:
-        """Basic quick sort of list items"""
+    def quick_sort_base(elems: list | tuple) -> list:
+        """Basic quick sort of items"""
         if len(elems) < 2:
             return elems
 
@@ -91,19 +91,27 @@ class RecursiveAlgorithms:
         )
 
     @staticmethod
-    def quick_sort(elems: list) -> list:
-        """Basic quick sort of list items"""
+    def quick_sort(elems: list | tuple) -> list:
+        """Quick sort of items"""
         if len(elems) < 2:
             return elems
 
-        pivot_index = random.randint(0, len(elems) - 1)
-        pivot = elems[pivot_index]
-        less_elems = [elems[index] for index in range(len(elems)) if elems[index] <= pivot and index != pivot_index]
-        greater_elems = [elems[index] for index in range(len(elems)) if elems[index] > pivot and index != pivot_index]
+        pivot = elems[random.randint(0, len(elems) - 1)]
+        less_elems = list()
+        equal_elems = list()
+        greater_elems = list()
+        for elem in elems:
+            if elem < pivot:
+                less_elems.append(elem)
+            elif elem == pivot:
+                equal_elems.append(elem)
+            else:
+                greater_elems.append(elem)
+
         return (
-                RecursiveAlgorithms.quick_sort_base(less_elems) +
-                [pivot] +
-                RecursiveAlgorithms.quick_sort_base(greater_elems)
+                RecursiveAlgorithms.quick_sort(less_elems) +
+                equal_elems +
+                RecursiveAlgorithms.quick_sort(greater_elems)
         )
 
 
@@ -122,7 +130,7 @@ def main() -> None:
     print(RecursiveAlgorithms.binary_search_num_mine(nums, 5))
     print(RecursiveAlgorithms.binary_search_num_mine(nums, -200))
 
-    nums = [10, 5, 2, 3]
+    nums = (10, 5, 2, 3)
     print(RecursiveAlgorithms.quick_sort_base(nums))
     print(RecursiveAlgorithms.quick_sort(nums))
 
